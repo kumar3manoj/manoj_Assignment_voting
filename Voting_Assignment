@@ -1,0 +1,23 @@
+1.containers are running after running the yaml files:
+
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/db       1/1     1            1           23m
+deployment.apps/redis    1/1     1            1           23m
+deployment.apps/result   1/1     1            1           23m
+deployment.apps/vote     1/1     1            1           23m
+deployment.apps/worker   1/1     1            1           23m
+
+2. Deleted voting pod
+[root@ip-172-31-16-230 k8s-specifications]# #kubectl delete pod -n default vote-                                                                             94849dc97-8ss4q
+observed: Another voting pod created and voting is running succesfully
+
+3.Deleted worker pod
+kubectl delete pod -n default worker-dd46d7584-9vsgp
+observed: Another worked pod created and voting and result is running succesfully
+
+4. Dleted DB
+OBSERVED : voting app recreated. voting and result app is reachable but result app not showing data and also it was observed worker pod restarted
+
+5. DB data not available in worker node after db restart
+
+6.result pod app restarted and voting and result app working
